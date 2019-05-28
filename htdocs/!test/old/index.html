@@ -1,0 +1,243 @@
+<html>
+<head>
+	<meta charset="utf-8">
+    <title>Контроллер</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="http://twitter.github.com/bootstrap/assets/css/bootstrap-responsive.css" rel="stylesheet">
+    <style type="text/css">
+		body {
+			margin: 30px 10px;
+			padding: 0;
+		}
+    </style>
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
+	<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.0.3/bootstrap.min.js"></script>
+	<script type="text/javascript">
+
+
+//Порт к которому подключен Arduino
+var serialPort = 'COM29';
+
+//непосредственно управляющая функция
+var Arduino = function(sp, errorCallback) {
+	this.serialPort = sp;
+	this.errorCallback = errorCallback || function(){
+		console.log('Error');
+	}
+	this.send = function(data, callback){
+		var callback = callback;
+		var self = this;
+		data['p'] = this.serialPort;
+		data['s'] = Math.round(Math.random()*1000); //на всякий случай, чтобы браузер не кешировал
+		$.ajax({
+			url:'c.py',
+			data:data,
+			success:function(data){
+				if($.trim(data) == 'error'){
+					self.errorCallback();
+				} else {
+					if(typeof callback == "function") callback(data);
+				}
+			}
+		});
+	}
+	this.set = function(command, callback){
+		this.send({
+			c:command,
+			r:0
+		}, callback);
+	}
+	this.get = function(command, callback){
+		this.send({
+			c:command,
+			r:1
+		}, callback);
+	}
+		
+}
+
+//Отображение контролов
+var Controller = function(){
+	var self = this;
+	this.arduino = new Arduino(serialPort);
+	this.ports = 13;
+	this.container = $('#list');
+	this.buttons = [];
+	this.types = {
+		digitalWrite: function(pin,container){
+			container.append(
+				$('<button>')
+					.attr({
+						'class':'span12 btn btn-danger',
+						'data-id':pin
+					})
+					.text('Off')
+					.click(function(){
+						if($(this).hasClass('btn-success')){
+							$(this).attr('class','span12 btn btn-danger').text('Off');
+							self.arduino.set("0"+$(this).data('id'));
+						}else{
+							$(this).attr('class','span12 btn btn-success').text('On');
+							self.arduino.set("1"+$(this).data('id'));
+						}
+					})
+			);
+		},
+		digitalRead: function(pin,container){
+			container.append(
+				$('<div>').attr({
+					'class':'span12 readPin',
+					'data-id':pin
+				})
+				.css({
+					"textAlign": "center",
+					"paddingTop": 9
+				})
+				.text('')
+			);
+			self.buttons.push(pin);
+		},
+		analogWrite: function(pin,container){
+			var sliderEl = $('<div>').attr({
+				'class':'slider',
+				'data-id':pin
+			});
+			container.append($('<div>').attr('class','span12').css('padding',"8px 10px").append(sliderEl));
+			sliderEl.slider({
+				min: 0,
+				max: 255,
+				slide: function( event, ui ) {
+					var pin = $(this).data('id');
+					self.arduino.set("5"+(pin < 10 ? "0" + pin : pin)+ui.value);
+				}
+			});
+		},
+		analogRead: function(pin,container){
+			var sliderEl = $('<div>').css('opacity',1).attr({
+				'class':'slider sliderRead',
+				'data-id':pin
+			});
+			container.append($('<div>').attr('class','span12').css('padding',"8px 10px").append(sliderEl));
+			sliderEl.slider({
+				min: 0,
+				max: 255,
+				disabled: true
+			});
+		},
+		servo: function(pin,container){
+			var sliderEl = $('<div>').attr({
+				'class':'slider',
+				'data-id':pin
+			});
+			container.append($('<div>').attr('class','span12').css('padding',"8px 10px").append(sliderEl));
+			sliderEl.slider({
+				min: 0,
+				max: 166,
+				slide: function( event, ui ) {
+					var pin = $(this).data('id');
+					self.arduino.set("2"+(pin < 10 ? "0" + pin : pin)+ui.value);
+				}
+			});
+		}
+	}
+	this.start = function(){
+		var self = this;
+		var c = true;
+		for(var i =1; i < this.ports+1; i++){
+			var el = $('<p>').attr('class','span6');
+			if(c)el.css('marginLeft',0);
+			c = !c;
+			var sb = $('<select>').attr({
+				'data-id':i,
+				'class': 'span12'
+			}).change(function(){
+				var el = $(this);
+				self.changeType(el.data('id'), el.val(), el.parent().parent().find('.pinContent:first'));
+			});
+				sb.append($('<option>').text('None').val('none'));
+				sb.append($('<option>').text('Digital Write').val('digitalWrite'));
+				sb.append($('<option>').text('Digital Read').val('digitalRead'));
+				sb.append($('<option>').text('Analog Write').val('analogWrite'));
+				sb.append($('<option>').text('Analog Read').val('analogRead'));
+				sb.append($('<option>').text('Servo').val('servo'));
+			el.append($('<div>').attr('class','span1').text(i));
+			el.append($('<div>').attr('class','span3').append(sb));
+			el.append(
+				$('<div>').attr('class','span8 pinContent')
+			);
+			this.container.append(el);
+		}
+		
+	}
+	this.changeType = function(pin,type,container){
+		container.find('*').remove();
+		if(this.types[type]){
+			this.types[type](pin,container);
+		}
+		self.buttons = [];
+		$('#list .readPin, #list .sliderRead').each(function(){
+			self.buttons.push($(this).data('id'));
+		});
+		console.log(pin,type);
+	}
+	this.checkButtons = function(){
+		var self = this;
+		if (this.buttons.length) {
+			var currentButton = this.buttons.shift();
+			this.buttons.push(currentButton);
+			console.log('check Pin', currentButton);
+			self.arduino.get("3"+currentButton, function(data){
+				data = $.trim(data);
+				el = $('#list .readPin[data-id='+currentButton+']');
+				if(el.length){
+					el.text(data==1 ? "On" : 'Off').attr('class','span12 readPin label '+(data==1 ? "label-success" : ''));
+				}else{
+					$('#list .sliderRead[data-id='+currentButton+']').val(data);
+				}
+				console.log(currentButton,data);
+				setTimeout(function(){
+					self.checkButtons();
+				},1000);
+			})
+			return;
+		}
+		setTimeout(function(){
+			self.checkButtons();
+		}, 500);
+	}
+	this.start();
+	this.checkButtons();
+	$('#sPort').val(serialPort).change(function(){
+		self.arduino.serialPort = $(this).val();
+	});
+	$('#pins').val(this.ports).change(function(){
+		self.ports = $(this).val()*1;
+		self.container.html('<div></div>');
+		self.buttons = [];
+		self.start();
+	});
+}
+$(document).ready(function(){
+    new Controller();
+});
+	</script>
+</head>
+<body>
+	<span class='span3' style='white-space:nowrap; margin-left:20px'>Pins: <input type="text" id='pins' style="margin: 0; width: 100px;" /></span><span class='span3' style='white-space:nowrap'>Serial port: <input type="text" id='sPort' style="margin: 0; width: 100px;" /></span>
+	<div style='clear:both'></div>
+	<hr/>
+	<div class="container-fluid" id="generalContent">
+		<div class="row-fluid" id='list'>
+		<div></div></div>
+    </div>
+</body>
+</html>
