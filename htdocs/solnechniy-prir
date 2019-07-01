@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<title>Природа</title>
+	<meta name="description" content="">
+	<meta name="keywords" content=" ">
+	<link rel="stylesheet" href="css/main.css">
+	<link rel="icon" type="image/x-icon" href="/images/favicon.ico">	
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+</head>
+<body>
+<div class="box2">
+<div class="gerb"><center><img src='media/solnechniy.gif' width="200"></center></div>
+<div><center><h1>ЗАТО Солнечный</h1></center></div>
+<ul>
+<p>
+    <strong>ЗАТО «СОЛНЕЧНЫЙ»</strong>
+    <strong></strong>
+</p>
+<p>
+    <strong>Реликтовый лес</strong>
+    <strong></strong>
+</p>
+<p>
+    <img
+        width="209"
+        height="376"
+        src="media\solnechniy-prir-1.png"
+    />
+    <img
+        width="299"
+        height="376"
+        src="media\solnechniy-prir-2.png"
+    />
+    <strong></strong>
+</p>
+<p>
+    Поселок расположен на острове Городомля, втором по величине острове на
+    озере Селигер. По периметру окружён лесом, который защищает его от ветров,
+    дующих на Селигере. В восточной части острова на площади 7 га произрастает
+    реликтовый хвойный лес.
+</p>
+<p>
+    <img
+        width="510"
+        height="341"
+        src="media\solnechniy-prir-3.png"
+    />
+</p>
+<p>
+    <img
+        width="524"
+        height="277"
+        src="media\solnechniy-prir-4.png"
+    />
+</p>
+<p>
+    <img
+        width="457"
+        height="305"
+        src="media\solnechniy-prir-5.png"
+    />
+</p>
+<p>
+    <img
+        width="483"
+        height="322"
+        src="media\solnechniy-prir-6.png"
+    />
+</p>
+</ul>
+<div><a href="solnechniy.html" class="glo">Назад</a></div>
+<div><a href="index.html" class="glo">Домой</a></div>
+</div>
+</body>
+</html>
