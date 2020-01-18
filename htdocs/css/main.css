@@ -71,6 +71,10 @@ a.glo {
   font: 400 18px tahoma;
   border: 1px solid #00c6ff;
 }
+a.glo:hover {
+  background-position: 0 0;
+  color: #fff;
+}
 .glo:last-child{ 
 	margin-bottom: 0px; 
   }
