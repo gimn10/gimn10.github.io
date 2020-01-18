@@ -2,7 +2,8 @@
 
 body {
   margin: 0;
-  padding: 0;
+  /*padding-top: 50px;
+  padding-bottom: 50px;*/
   background-color: #ecf0f5;
   -webkit-font-smoothing: antialiased;
   font-family: "Open Sans", sans-serif;
@@ -111,7 +112,8 @@ a.glo:hover {
 .navigation-button_back {
   background-image: url("../media/main/arrow-left-light.svg");
   position: fixed;
-  top: 130px;
+  background-size: 45%;
+  top: 150px;
   left: 30px;
 }
 
@@ -137,7 +139,9 @@ a.glo:hover {
   box-shadow: 0 0 55px rgba(0, 0, 0, 0.1);
   bottom: calc(50% - 200px);
   background-color: #f5f5f5;
-  padding: 0 50px;
+  padding: 5px 50px;
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
 
 .tx {
