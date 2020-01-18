@@ -88,13 +88,9 @@ a.glo:hover {
   background-position: 0 0;
   color: #fff;
 }
-.home {
- position: fixed;
- top: 50px;
- left: 30px;
+.navigation-button {
  padding: 10px;
  display: block;
- background-image: url("../media/main/home-solid.svg");
  background-repeat: no-repeat;
  background-size: 60%;
  background-position: center;
@@ -103,6 +99,20 @@ a.glo:hover {
  border-radius: 50%;
  background-color: #F5F5F5;
  box-shadow: 0 0 55px rgba(0, 0, 0, 0.1);
+}
+
+.navigation-button_home {
+  background-image: url("../media/main/home-solid.svg");
+  position: fixed;
+  top: 50px;
+  left: 30px;
+}
+
+.navigation-button_back {
+  background-image: url("../media/main/arrow-left-solid.svg");
+  position: fixed;
+  top: 130px;
+  left: 30px;
 }
 
 .box {
