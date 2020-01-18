@@ -1,6 +1,7 @@
 body {
   margin: 0;
   padding: 0;
+  background-color: #ecf0f5;
 }
 
 .map {
@@ -78,6 +79,22 @@ a.glo:hover {
   background-position: 0 0;
   color: #fff;
 }
+.home {
+ position: fixed;
+ top: 50px;
+ left: 30px;
+ padding: 10px;
+ display: block;
+ background-image: url("../media/main/home-solid.svg");
+ background-repeat: no-repeat;
+ background-size: 60%;
+ background-position: center;
+ width: 50px;
+ height: 50px;
+ border-radius: 50%;
+ background-color: #F5F5F5;
+ box-shadow: 0 0 55px rgba(0, 0, 0, 0.1);
+}
 
 .box {
   margin-left: auto;
@@ -86,9 +103,9 @@ a.glo:hover {
   position: relative;
   box-sizing: border-box;
   width: 300px;
-  box-shadow: 0 0 32px 10px #ccc;
+  box-shadow: 0 0 55px rgba(0, 0, 0, 0.1);
   bottom: calc(50% - 200px);
-  background-color: #f5f5f5;
+  background-color: #F5F5F5;
 }
 
 .box2 {
@@ -98,9 +115,9 @@ a.glo:hover {
   position: relative;
   box-sizing: border-box;
   width: 70%;
-  box-shadow: 0 0 32px 10px #ccc;
+  box-shadow: 0 0 55px rgba(0, 0, 0, 0.1);
   bottom: calc(50% - 200px);
-  background-color: #f5f5f5;
+  background-color: #F5F5F5;
 }
 
 .tx {
