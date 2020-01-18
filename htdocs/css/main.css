@@ -17,11 +17,7 @@ svg {
 	opacity: .3;
 }
 
-.part:hover {
-	transition: opacity .2s ease;
-	opacity: .5;
-	cursor: pointer;
-}
+
 
 
 .description {
@@ -57,7 +53,6 @@ a.glo{
  text-align:center;
  margin:20px auto;
  display: block;
- background-image: linear-gradient(to left,transparent,transparent 50%,#00c6ff 50%,#00c6ff);
  background-position: 100% 0;
  background-size: 200% 100%;
  transition: all .25s ease-in;
@@ -67,10 +62,6 @@ a.glo{
 .glo:last-child{ 
 	margin-bottom: 0px; 
   }
-a.glo:hover {
-background-position: 0 0;
-color:#fff;
-}
 
 .box {
 	margin-left: auto; 
