@@ -1,4 +1,16 @@
-@import url("fonts/OpenSans-Regular.ttf");
+@font-face {
+  font-family: "OpenSans-Regular";
+  src: url("fonts/opensans_regular_macroman/OpenSans-Regular-webfont.eot")
+      format("eot"),
+    url("fonts/opensans_regular_macroman/OpenSans-Regular-webfont.woff")
+      format("woff"),
+    url("fonts/opensans_regular_macroman/OpenSans-Regular-webfont.ttf")
+      format("truetype"),
+    url("fonts/opensans_regular_macroman/OpenSans-Regular-webfont.svg")
+      format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
 
 body {
   margin: 0;
@@ -6,7 +18,7 @@ body {
   padding-bottom: 50px;*/
   background-color: #ecf0f5;
   -webkit-font-smoothing: antialiased;
-  font-family: "Open Sans", sans-serif;
+  font-family: "OpenSans-Regular", sans-serif;
 }
 
 .map {
