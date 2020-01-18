@@ -43,7 +43,6 @@ ul {
   opacity: 0.3;
 }
 
-
 .description {
   display: none;
   position: absolute;
@@ -87,10 +86,10 @@ a.glo:hover {
   background-position: 0 0;
   color: #fff;
 }
-.glo:last-child{ 
-	margin-bottom: 0px; 
-  }
+.glo:last-child {
+  margin-bottom: 0px;
 }
+
 .navigation-button {
   padding: 10px;
   display: block;
