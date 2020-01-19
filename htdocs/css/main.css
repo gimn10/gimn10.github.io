@@ -86,37 +86,6 @@ a.glo:hover {
   background-position: 0 0;
   color: #fff;
 }
-.glo:last-child {
-  margin-bottom: 0px;
-}
-
-.navigation-button {
-  padding: 10px;
-  display: block;
-  background-repeat: no-repeat;
-  background-size: 60%;
-  background-position: center;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background-color: #f5f5f5;
-  box-shadow: 0 0 55px rgba(0, 0, 0, 0.1);
-}
-
-.navigation-button_home {
-  background-image: url("../media/main/home-light.svg");
-  position: fixed;
-  top: 50px;
-  left: 30px;
-}
-
-.navigation-button_back {
-  background-image: url("../media/main/arrow-left-light.svg");
-  position: fixed;
-  background-size: 45%;
-  top: 150px;
-  left: 30px;
-}
 
 .box {
   margin-left: auto;
