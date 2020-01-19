@@ -78,13 +78,11 @@ a.glo {
   display: block;
   background-position: 100% 0;
   background-size: 200% 100%;
-  transition: all 0.25s ease-in;
   font: 400 18px tahoma;
   border: 1px solid #00c6ff;
 }
 a.glo:hover {
   background-position: 0 0;
-  color: #fff;
 }
 
 .box {
