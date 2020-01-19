@@ -84,6 +84,9 @@ a.glo {
 a.glo:hover {
   background-position: 0 0;
 }
+.glo:last-child {
+  margin-bottom: 0px;
+}
 
 .box {
   margin-left: auto;
