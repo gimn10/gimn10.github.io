@@ -80,15 +80,15 @@ a.glo {
   );
   background-position: 100% 0;
   background-size: 200% 100%;
-  transition: all 0.25s ease-in;
+  /*transition: all 0.25s ease-in;*/
   font: 400 18px tahoma;
   border: 1px solid #00c6ff;
   margin-bottom: 10px;
-}
+}/*
 a.glo:hover {
   background-position: 0 0;
   color: #fff;
-}
+}*/
 .navigation-button {
   padding: 10px;
   display: block;
