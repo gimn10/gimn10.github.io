@@ -1,6 +1,24 @@
+@font-face {
+  font-family: "OpenSans-Regular";
+  src: url("fonts/opensans_regular_macroman/OpenSans-Regular-webfont.eot")
+      format("eot"),
+    url("fonts/opensans_regular_macroman/OpenSans-Regular-webfont.woff")
+      format("woff"),
+    url("fonts/opensans_regular_macroman/OpenSans-Regular-webfont.ttf")
+      format("truetype"),
+    url("fonts/opensans_regular_macroman/OpenSans-Regular-webfont.svg")
+      format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
   margin: 0;
-  padding: 0;
+  /*padding-top: 50px;
+  padding-bottom: 50px;*/
+  background-color: #ecf0f5;
+  -webkit-font-smoothing: antialiased;
+  font-family: "OpenSans-Regular", sans-serif;
 }
 
 .map {
@@ -16,14 +34,13 @@ svg {
   width: 100%;
 }
 
-.part {
-  opacity: 0.3;
+ul {
+  margin: 0;
+  padding: 0;
 }
 
-.part:hover {
-  transition: opacity 0.2s ease;
-  opacity: 0.5;
-  cursor: pointer;
+.part {
+  opacity: 0.3;
 }
 
 .description {
@@ -46,7 +63,6 @@ svg {
 }
 
 .gerb {
-  margin-top: 50px;
   width: 200px;
   margin-left: auto;
   margin-right: auto;
@@ -60,19 +76,11 @@ a.glo {
   text-align: center;
   margin: 20px auto;
   display: block;
-  background-image: linear-gradient(
-    to left,
-    transparent,
-    transparent 50%,
-    #00c6ff 50%,
-    #00c6ff
-  );
   background-position: 100% 0;
   background-size: 200% 100%;
   transition: all 0.25s ease-in;
   font: 400 18px tahoma;
   border: 1px solid #00c6ff;
-  margin-bottom: 10px;
 }
 a.glo:hover {
   background-position: 0 0;
@@ -82,23 +90,49 @@ a.glo:hover {
 .box {
   margin-left: auto;
   margin-right: auto;
-  top: 50%;
+  margin-top: 50px;
   position: relative;
   box-sizing: border-box;
   width: 300px;
-  box-shadow: 0 0 32px 10px #ccc;
-  bottom: calc(50% - 200px);
+  padding: 30px 0;
+  box-shadow: 0 0 55px rgba(0, 0, 0, 0.1);
   background-color: #f5f5f5;
 }
 
 .box2 {
   margin-left: auto;
   margin-right: auto;
-  top: 50%;
+  margin-top: 50px;
   position: relative;
   box-sizing: border-box;
   width: 70%;
-  box-shadow: 0 0 32px 10px #ccc;
-  bottom: calc(50% - 200px);
+  box-shadow: 0 0 55px rgba(0, 0, 0, 0.1);
   background-color: #f5f5f5;
+  padding: 5px 50px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+p {
+  font-size: 23px;
+  line-height: 1.52;
+  margin: 30px 0;
+}
+
+h1 {
+  font-size: 36px;
+}
+
+h2 {
+  font-size: 32px;
+}
+
+h3 {
+  font-size: 26px;
+  margin-top: 100px;
+}
+
+img {
+  margin: 0 auto;
+  display: block;
 }
