@@ -24,6 +24,14 @@ body {
 .map {
   position: relative;
   text-align: center;
+  box-sizing: border-box;
+  height: calc(100vh - 60px);
+
+}
+
+.map-wrapper {
+  position: relative;
+  padding: 30px;
 }
 
 svg {
@@ -32,6 +40,21 @@ svg {
   left: 0;
   height: 100%;
   width: 100%;
+}
+
+.map-svg {
+  z-index: 1;
+}
+
+.map-img {
+  margin: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  z-index: 0;
 }
 
 ul {
