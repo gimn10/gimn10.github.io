@@ -42,6 +42,15 @@ svg {
   width: 100%;
 }
 
+.index-head{
+  font-family: "OpenSans-Regular";
+  font-style: italic;
+  font-size: 5vh;
+  margin-left: 5vh;
+  position: fixed;
+  margin-top: 30vh;
+}
+
 .map-svg {
   z-index: 1;
 }
